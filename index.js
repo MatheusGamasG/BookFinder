@@ -1,43 +1,21 @@
-const title = document.querySelector('.title');
-const cover = document.querySelector('.cover');
-const authors = document.querySelector('.authors');
-const descrip = document.querySelector('.descrip');
-const pageNumb = document.querySelector('.pageNumb');
+const bookResultContainer = document.querySelector('.books-result__container');
 
-class Livro {
-    constructor(title, cover, authors, description, pages) {
-        this.title = title;
-        if (cover == undefined) {
-            this.cover = ''
-        } else {
-            this.cover = cover;
-        }
-        this.authors = authors;
-        this.description = description;
-        this.pages = pages;
-    }
-}
-
-
-
-fetch('https://www.googleapis.com/books/v1/volumes?q=harry+potter&maxResults=12')
+fetch('https://www.googleapis.com/books/v1/volumes?q=Harry+potter&maxResults=12&filter=ebooks')
 .then(
     (response) => {
         return response.json();
 })
 .then((data) => {
-
     let rawItemsArray = data.items;
-    let finalItems = []
-    rawItemsArray.forEach(item => {
-        finalItems.push(item.volumeInfo)
+    let finalItems = rawItemsArray.map((item) => {
+        return item.volumeInfo
     })
+    console.log(finalItems)
 
-    const book1 = new Livro(finalItems[0].title, finalItems[0].thumbnail, finalItems[0].authors[0], finalItems[0].description, finalItems[0].pageCount)
-
-    title.textContent = book1.title
-    cover.src = book1.cover
-    authors.textContent = book1.authors;
-    
+    finalItems.forEach((item) => {
+        const card = criaCard(bookResultContainer);
+        let book = new Livro(item.title, item.imageLinks.thumbnail, item.authors, item.description, item.pageCount);
+        preencheCard(book, card);
+    })
 })
 
