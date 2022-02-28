@@ -4,24 +4,65 @@
     font-family: 'League Spartan', sans-serif;
 }
 
-.main__title {
+html {
+    background-color:#e6c671;
+}
+
+.header__container {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:15vh;
+    background-color:#c47fda;
+    color:#FFFFFF;
+    text-shadow: 2px 2px 5px #ffffff;
+}
+
+.header__logo {
+    height:2rem;
+    object-fit:cover;
+}
+
+.header__title {
+    font-size:2rem;
     text-align:center;
     margin:1rem;
 }
 
+.main__container {
+    background-color:#e6c671;
+}
+
+
 .search__container {
     width:50%;
-    margin: 1rem auto;
+    margin: 0 auto;
+    padding:1rem;
+    display:flex;
+    justify-content:center;
 }
 
 .search__input {
     height:2rem;
     width:40%;
+    font-size:1.5rem;
+    border-radius:0.2rem;
+    box-shadow: 1px 1px 4px #444242;
+    outline:0;
 }
 
 .search__button {
-    width:40%;
+    width:20%;
     height:2rem;
+    background-image: linear-gradient(to right, #c47fda, #b961d6, #b350d4, #a827d3, #9701c9);
+    color:#FFFFFF;
+    font-size:1.5rem;
+    border-radius:0.2rem;
+    border: 1px solid #b977d8;
+    text-shadow: 1px 1px 3px #000000;
+    box-shadow: 1px 1px 4px #444242;
+    cursor:pointer;
+    position:relative;
 }
 
 .books-result__container {
@@ -41,6 +82,7 @@
     flex-basis:30%;
     max-height:100vh;
     margin: 0.5rem;
+    background-color: #ffffff;
 }
 
 .book__cover {

@@ -8,22 +8,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
+    <link rel="icon" href="./book.png"/>
     <title>Book Finder</title>
 </head>
 <body>
-    <header>
-        <h1 class="main__title">Book Finder</h1>
+    <header class="header__container">
+        <img src="./book.png" class="header__logo">
+        <h1 class="header__title">Book Finder</h1>
     </header>
-    <main>
+    <main class="main__container">
         <section class="search__container">
-            <input class="search__input" type="text">
+            <input class="search__input" type="text" placeholder="Type Here!">
             <button class="search__button">Search!</button>
         </section>
 
         <section class="books-result__container">
         </section>
     </main>
-
     <script src="./index.js"></script>
     <script src="./livro.js"></script>
     <script src="./cards.js"></script>
