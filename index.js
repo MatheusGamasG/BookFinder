@@ -1,21 +1,29 @@
 const bookResultContainer = document.querySelector('.books-result__container');
+const searchInput = document.querySelector('.search__input');
+const buttonInput = document.querySelector('.search__button');
 
-fetch('https://www.googleapis.com/books/v1/volumes?q=Harry+potter&maxResults=12&filter=ebooks')
-.then(
-    (response) => {
-        return response.json();
-})
-.then((data) => {
-    let rawItemsArray = data.items;
-    let finalItems = rawItemsArray.map((item) => {
+buttonInput.addEventListener('click', () => {
+
+    let temporaryInput = searchInput.value
+
+    if(temporaryInput.includes(' ')) {
+        temporaryInput = temporaryInput.replaceAll(' ', '+');
+    }
+
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${temporaryInput}&maxResults=12&filter=ebooks&orderBy=relevance`)
+    .then(
+        (response) => response.json())
+    .then((data) => {
+        validaCards(bookResultContainer.childNodes.length);
+        let rawItemsArray = data.items;
+        let finalItems = rawItemsArray.map((item) => {
         return item.volumeInfo
-    })
-    console.log(finalItems)
-
-    finalItems.forEach((item) => {
-        const card = criaCard(bookResultContainer);
-        let book = new Livro(item.title, item.imageLinks.thumbnail, item.authors, item.description, item.pageCount);
-        preencheCard(book, card);
+        })
+    
+        finalItems.forEach((item) => {
+            const card = criaCard(bookResultContainer);
+            let book = new Livro(item.title, item.imageLinks.thumbnail, item.authors, item.averageRating, item.pageCount);
+            preencheCard(book, card);
+        })
     })
 })
-

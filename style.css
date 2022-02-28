@@ -1,28 +1,96 @@
 * {
     margin: 0;
     box-sizing:border-box;
+    font-family: 'League Spartan', sans-serif;
+}
+
+.main__title {
+    text-align:center;
+    margin:1rem;
+}
+
+.search__container {
+    width:50%;
+    margin: 1rem auto;
+}
+
+.search__input {
+    height:2rem;
+    width:40%;
+}
+
+.search__button {
+    width:40%;
+    height:2rem;
 }
 
 .books-result__container {
     display:flex;
     flex-wrap:wrap;
     justify-content:space-around;
+    align-items:center;
+    width:100%;
+    margin: 0 auto;
 }
 
 .book__card {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
     border: 2px solid rgba(0,0,0,0.5);
-    width:25%;
+    flex-basis:30%;
+    max-height:100vh;
     margin: 0.5rem;
-    padding: 3rem;
-    border-radius: 5rem;
-}
-
-.book__title {
-    font-size:2rem;
-    word-wrap:break-word;
-    text-align:justify;
 }
 
 .book__cover {
-    
+    height:100%;
+    object-fit:cover;
+}
+
+.book__infos {
+    display:flex;
+    flex-direction:column;
+    padding-left:0.4rem;
+    width:70%;
+}
+
+.book__title {
+    font-size:1.2rem;
+    display:inline-block;
+    text-align:start;
+    word-wrap:break-word;
+    text-transform:uppercase;
+    margin:0.5rem;
+    height:2rem;
+}
+
+
+.book__authors {
+    margin:0.5rem;
+    padding-top:0.5rem;
+}
+
+.book__authors::before {
+    content: 'Autor(a): ';
+    font-weight:bold;
+}
+
+.book__rating {
+    margin:0.5rem;
+
+}
+
+.book__rating::before {
+    content: 'Rating: ';
+    font-weight:bold;
+}
+
+.book__page-number {
+    margin:0.5rem;
+}
+
+.book__page-number::before {
+    content: 'Nº de páginas: ';
+    font-weight:bold;
 }

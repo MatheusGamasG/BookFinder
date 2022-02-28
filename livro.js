@@ -1,23 +1,23 @@
 class Livro {
-    constructor(title, cover, authors, description, pages) {
-        this.title = title;
-
+    constructor(title, cover, authors, rating, pages) {
         if (cover == undefined) {
             this.cover = 'Cover not available'
         } else {
             this.cover = cover;
         }
+        
+        this.title = title;
 
         if (authors == undefined) {
             this.authors = 'Anonymous author'
         } else {
-            this.authors = authors;
+            this.authors = authors[0];
         }
 
-        if(description == undefined) {
-            this.description = 'Description not available'
+        if(rating == undefined) {
+            this.rating = 'Rating is not available'
         } else {
-            this.description = description;
+            this.rating = rating;
         }
 
         if(pages == undefined) {
