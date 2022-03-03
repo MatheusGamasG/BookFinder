@@ -1,11 +1,12 @@
 const bookResultContainer = document.querySelector('.books-result__container');
 const searchInput = document.querySelector('.search__input');
 const buttonInput = document.querySelector('.search__button');
+const loadingBar = document.querySelector('.loadingBar');
 
 buttonInput.addEventListener('click', () => {
-
+    validaCards(bookResultContainer.childNodes.length);
+    loadingBar.classList.toggle('notVisible');
     let temporaryInput = searchInput.value
-
     if(temporaryInput.includes(' ')) {
         temporaryInput = temporaryInput.replaceAll(' ', '+');
     }
@@ -14,7 +15,7 @@ buttonInput.addEventListener('click', () => {
     .then(
         (response) => response.json())
     .then((data) => {
-        validaCards(bookResultContainer.childNodes.length);
+        loadingBar.classList.toggle('notVisible');        
         let rawItemsArray = data.items;
         let finalItems = rawItemsArray.map((item) => {
         return item.volumeInfo

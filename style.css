@@ -8,6 +8,15 @@ html {
     background-color:#e6c671;
 }
 
+::-webkit-scrollbar {
+    width:0.75rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #8f7099;
+    border-radius:10rem;
+}
+
 .header__container {
     display:flex;
     justify-content:center;
@@ -19,7 +28,7 @@ html {
 }
 
 .header__logo {
-    height:2rem;
+    height:4rem;
     object-fit:cover;
 }
 
@@ -63,6 +72,36 @@ html {
     box-shadow: 1px 1px 4px #444242;
     cursor:pointer;
     position:relative;
+    transition:all 1s;
+}
+
+.search__button:hover {
+    background:linear-gradient(to right, #c37fdaaf, #b961d6af, #b350d4af, #a827d3af, #9701c9af);
+}
+
+.loadingBar {
+    width:15%;
+    height:1rem;
+    background: linear-gradient(to right, #c37fdaaf, #b961d6af, #b350d4af, #a827d3af, #9701c9af);
+    border-radius:2rem;
+    position:relative;
+    border: 1px solid rgb(107, 97, 97);
+}
+
+.loadingBar::before {
+    content: '';
+    width:30%;
+    height:1rem;
+    background:linear-gradient(to right, #bcbabdda, #dddbddda, #dedddfda, #e7e7e7da, #fcfcfcda);
+    position:absolute;
+    top:0;
+    right:0;
+    border-radius:2rem;
+    animation:loading .5s alternate-reverse ease-in-out infinite;
+}
+
+.notVisible {
+    display:none;
 }
 
 .books-result__container {
@@ -83,6 +122,13 @@ html {
     max-height:100vh;
     margin: 0.5rem;
     background-color: #ffffff;
+    box-shadow: 2px 2px 5px rgba(88, 88, 88, 0.603);
+    transition:all 1s;
+}
+
+.book__card:hover {
+    background-color:rgba(0,0,0,0.2);
+    cursor:pointer;
 }
 
 .book__cover {
@@ -135,4 +181,14 @@ html {
 .book__page-number::before {
     content: 'Nº de páginas: ';
     font-weight:bold;
+}
+
+@keyframes loading {
+    from {
+        right:0%;
+    }
+
+    to {
+        right:70%;
+    }
 }
